@@ -1,56 +1,61 @@
-# Welcome to your Expo app 👋
+## Objetivo
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Crear una aplicación móvil con React Native que muestre una pantalla de Login funcional, utilizando componentes nativos. La app debía replicar un diseño dado, validar credenciales hardcodeadas y mostrar mensajes de éxito o error según el resultado.
 
-## Get started
+## Cómo organicé el trabajo
 
-1. Install dependencies
+Arranqué desde el template base de Expo generado con `create-expo-app`. El punto de partida fue el archivo `src/app/index.tsx`, que es la pantalla principal de la app.
 
-   ```bash
-   npm install
-   ```
+Lo primero que hice fue entender qué componentes de React Native necesitaba para armar un formulario de login:
 
-2. Start the app
+- `View` para estructurar el layout
+- `Text` para los textos y el logo
+- `TextInput` para los campos de usuario y contraseña
+- `TouchableOpacity` para el botón de ingreso y los links
+- `StyleSheet` para los estilos
 
-   ```bash
-   npx expo start
-   ```
+Una vez identificados los componentes, fui construyendo la pantalla de arriba hacia abajo, siguiendo el diseño de la consigna: primero el logo, luego los inputs, el botón, y finalmente los links de "Olvidaste la clave?" y "Crear Cuenta".
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Decisiones que tomé
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+**Logo:** Como no contaba con la imagen oficial de Coca-Cola como asset, opté por representarlo con texto estilizado usando `fontStyle: "italic"`, `fontFamily: "Georgia"` y el color rojo característico (`#E61B1B`). El resultado se aproxima visualmente al diseño original.
 
-## Get a fresh project
+**Colores:** Respeté los colores del diseño dado — fondo gris claro (`#EBEBEB`), violeta para los bordes de inputs y el botón (`#7B4EFF`), y blanco para el interior de los campos.
 
-When you're ready, run:
+**Links no funcionales:** "Olvidaste la clave?" y "Crear Cuenta" se implementaron como `TouchableOpacity` sin ninguna acción asignada, tal como pedía la consigna.
 
-```bash
-npm run reset-project
+**Validación:** Las credenciales están hardcodeadas (`usuario: "nico"`, `password: "1234"`). Si son correctas, se muestra un mensaje de éxito en verde. Si no, un mensaje de error en rojo.
+
+**Layout general:** Usé `KeyboardAvoidingView` para que el teclado no tape los inputs cuando el usuario escribe, mejorando la experiencia en iOS.
+
+---
+
+## Uso de IA
+
+Utilicé ChatGPT como asistencia durante el desarrollo. Las partes donde recurrí a la IA están marcadas en el código con el comentario `[IA: ChatGPT]`. Las modificaciones que hice sobre lo que generó la IA están marcadas con `[MODIFICADO]`.
+
+En concreto, la IA me ayudó con la estructura base del formulario y la función de validación. Lo que modifiqué por mi cuenta fue el diseño visual completo (colores, tamaños, estilos), los mensajes que se muestran al usuario, y la incorporación de los links "Olvidaste la clave?" y "Crear Cuenta".
+
+---
+
+## Estructura del proyecto
+
+```
+src/
+└── app/
+    ├── _layout.tsx   → Contenedor raíz de la app (sin barra de navegación)
+    └── index.tsx     → Pantalla principal con el formulario de Login
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-### Other setup steps
+## Cómo correr el proyecto
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+npm install
+npx expo start
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Credenciales válidas para probar:
+- **Usuario:** nico
+- **Contraseña:** 1234

@@ -44,7 +44,7 @@ export default function App() {
         {/* [IA: ChatGPT] Campo para ingresar el usuario */}
         <TextInput
           style={styles.input}
-          placeholder="simon@galaxies.dev"
+          placeholder="Nico"
           placeholderTextColor="#999"
           value={usuario}
           onChangeText={setUsuario}
